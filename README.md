@@ -24,7 +24,7 @@ It demonstrates full DevOps workflow:
 
 
 
-# 🔧 System Architecture Explanation
+# System Architecture Explanation
 
 The system follows a **3-tier architecture**:
 
@@ -56,7 +56,7 @@ The system follows a **3-tier architecture**:
 
 ---
 
-# 📦 Kubernetes Components
+# Kubernetes Components
 
 ### 🔹 Deployments
 
