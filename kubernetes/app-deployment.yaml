@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-app
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: student-app
+
+  template:
+    metadata:
+      labels:
+        app: student-app
+
+    spec:
+      containers:
+      - name: student-app
+        image: enoc200/student-app:1.0
+        imagePullPolicy: IfNotPresent
+
+        ports:
+        - containerPort: 80
+
+        env:
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: student-app-config
+              key: DB_HOST
+
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: student-app-config
+              key: DB_NAME
+
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              name: student-app-config
+              key: DB_USER
+
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: student-app-secret
+              key: DB_PASSWORD
